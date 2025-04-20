@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package luminex.v1;
+
+import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
+import "luminex/v1/request/request.proto";
+import "luminex/v1/response/response.proto";
+
+option go_package = "github.com/bikash-789/comm-protos/luminex/v1;v1";
+
+service luminex {
+  rpc GetHealth(google.protobuf.Empty) returns (v1.response.HealthResponse) {
+    option (google.api.http) = {
+      get: "/v1/health"
+    };
+  }
+
+  rpc GetPRMetrics(v1.request.RepositoryRequest) returns (v1.response.PRMetricsResponse) {
+    option (google.api.http) = {
+      get: "/v1/gh/pr-metrics"
+    };
+  }
+
+
+  rpc GetMonthlyStats(v1.request.RepositoryRequest) returns (v1.response.MonthlyStatsResponse) {
+    option (google.api.http) = {
+      get: "/v1/gh/monthly-stats"
+    };
+  }
+
+
+  rpc GetRepoStats(v1.request.RepositoryRequest) returns (v1.response.RepoStatsResponse) {
+    option (google.api.http) = {
+      get: "/v1/gh/repo-stats"
+    };
+  }
+
+
+  rpc GetContributorStats(v1.request.RepositoryRequest) returns (v1.response.ContributorStatsResponse) {
+    option (google.api.http) = {
+      get: "/v1/gh/contributor-stats"
+    };
+  }
+
+
+  rpc GetIssueStats(v1.request.RepositoryRequest) returns (v1.response.IssueStatsResponse) {
+    option (google.api.http) = {
+      get: "/v1/gh/issue-stats"
+    };
+  }
+
+
+  rpc GetDetailedPRStats(v1.request.RepositoryRequest) returns (v1.response.DetailedPRStatsResponse) {
+    option (google.api.http) = {
+      get: "/v1/gh/detailed-pr-stats"
+    };
+  }
+}

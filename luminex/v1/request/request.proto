@@ -1,0 +1,11 @@
+syntax="proto3";
+
+package luminex.v1.request;
+
+option go_package = "github.com/bikash-789/comm-protos/luminex/v1/request;request";
+
+message RepositoryRequest {
+  string owner = 1;
+  string repo = 2;
+}
+
