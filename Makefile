@@ -40,10 +40,11 @@ api:
 		echo "No .proto files found in $(svc_dir)."; \
 		exit 0; \
 	fi
-	protoc --proto_path=./ \
+	PATH=$(GOPATH)/bin:$$PATH protoc --proto_path=./ \
 	       --proto_path=./third_party \
 	       --go_out=paths=source_relative:./ \
 	       --go-grpc_out=paths=source_relative:./ \
+	       --go-http_out=paths=source_relative:./ \
 	       --validate_out=paths=source_relative,lang=go:./ \
 	       --openapi_out=fq_schema_naming=true,default_response=false:$(svc_dir) \
 	       $(PROTO_FILES)

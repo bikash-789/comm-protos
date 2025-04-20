@@ -1,0 +1,274 @@
+# Generated with protoc-gen-openapi
+# https://github.com/google/gnostic/tree/master/cmd/protoc-gen-openapi
+
+openapi: 3.0.3
+info:
+    title: Luminex API
+    version: 0.0.1
+paths:
+    /v1/gh/contributor-stats:
+        get:
+            tags:
+                - Luminex
+            operationId: Luminex_GetContributorStats
+            parameters:
+                - name: owner
+                  in: query
+                  schema:
+                    type: string
+                - name: repo
+                  in: query
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/luminex.v1.response.ContributorStatsResponse'
+    /v1/gh/detailed-pr-stats:
+        get:
+            tags:
+                - Luminex
+            operationId: Luminex_GetDetailedPRStats
+            parameters:
+                - name: owner
+                  in: query
+                  schema:
+                    type: string
+                - name: repo
+                  in: query
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/luminex.v1.response.DetailedPRStatsResponse'
+    /v1/gh/issue-stats:
+        get:
+            tags:
+                - Luminex
+            operationId: Luminex_GetIssueStats
+            parameters:
+                - name: owner
+                  in: query
+                  schema:
+                    type: string
+                - name: repo
+                  in: query
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/luminex.v1.response.IssueStatsResponse'
+    /v1/gh/monthly-stats:
+        get:
+            tags:
+                - Luminex
+            operationId: Luminex_GetMonthlyStats
+            parameters:
+                - name: owner
+                  in: query
+                  schema:
+                    type: string
+                - name: repo
+                  in: query
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/luminex.v1.response.MonthlyStatsResponse'
+    /v1/gh/pr-metrics:
+        get:
+            tags:
+                - Luminex
+            operationId: Luminex_GetPRMetrics
+            parameters:
+                - name: owner
+                  in: query
+                  schema:
+                    type: string
+                - name: repo
+                  in: query
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/luminex.v1.response.PRMetricsResponse'
+    /v1/gh/repo-stats:
+        get:
+            tags:
+                - Luminex
+            operationId: Luminex_GetRepoStats
+            parameters:
+                - name: owner
+                  in: query
+                  schema:
+                    type: string
+                - name: repo
+                  in: query
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/luminex.v1.response.RepoStatsResponse'
+    /v1/health:
+        get:
+            tags:
+                - Luminex
+            operationId: Luminex_GetHealth
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/luminex.v1.response.HealthResponse'
+components:
+    schemas:
+        luminex.v1.response.ContributorData:
+            type: object
+            properties:
+                username:
+                    type: string
+                contributions:
+                    type: integer
+                    format: int32
+                avatarUrl:
+                    type: string
+        luminex.v1.response.ContributorStatsResponse:
+            type: object
+            properties:
+                totalContributors:
+                    type: integer
+                    format: int32
+                topContributors:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/luminex.v1.response.ContributorData'
+                commitsLast30Days:
+                    type: integer
+                    format: int32
+                avgCommitsPerDay:
+                    type: number
+                    format: float
+        luminex.v1.response.DetailedPRStatsResponse:
+            type: object
+            properties:
+                avgMergeTime:
+                    type: string
+                openPrs:
+                    type: integer
+                    format: int32
+                mergedLast7:
+                    type: integer
+                    format: int32
+                smallPrs:
+                    type: integer
+                    format: int32
+                mediumPrs:
+                    type: integer
+                    format: int32
+                largePrs:
+                    type: integer
+                    format: int32
+                avgComments:
+                    type: integer
+                    format: int32
+                prsWithoutReview:
+                    type: integer
+                    format: int32
+        luminex.v1.response.HealthResponse:
+            type: object
+            properties:
+                status:
+                    type: string
+        luminex.v1.response.IssueStatsResponse:
+            type: object
+            properties:
+                openIssues:
+                    type: integer
+                    format: int32
+                closedIssues:
+                    type: integer
+                    format: int32
+                avgResolutionTime:
+                    type: string
+                oldestOpenIssue:
+                    type: string
+                issuesLast30Days:
+                    type: integer
+                    format: int32
+        luminex.v1.response.MonthData:
+            type: object
+            properties:
+                month:
+                    type: string
+                openPrs:
+                    type: integer
+                    format: int32
+                mergedPrs:
+                    type: integer
+                    format: int32
+                issues:
+                    type: integer
+                    format: int32
+        luminex.v1.response.MonthlyStatsResponse:
+            type: object
+            properties:
+                data:
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/luminex.v1.response.MonthData'
+        luminex.v1.response.PRMetricsResponse:
+            type: object
+            properties:
+                avgMergeTime:
+                    type: string
+                openPrs:
+                    type: integer
+                    format: int32
+                mergedLast7:
+                    type: integer
+                    format: int32
+        luminex.v1.response.RepoStatsResponse:
+            type: object
+            properties:
+                stars:
+                    type: integer
+                    format: int32
+                forks:
+                    type: integer
+                    format: int32
+                watchers:
+                    type: integer
+                    format: int32
+                sizeKb:
+                    type: integer
+                    format: int32
+                lastUpdated:
+                    type: string
+                language:
+                    type: string
+tags:
+    - name: Luminex
