@@ -15,10 +15,6 @@
 # Output of the go coverage tool
 *.out
 
-# Go generated files
-*.pb.go
-*.pb.validate.go
-
 # MacOS files
 .DS_Store
 
