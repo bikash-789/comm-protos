@@ -6,7 +6,7 @@ VERSION := $(shell git describe --tags --always 2>/dev/null || echo "unknown")
 GOVERSION := $(shell go version | cut -d " " -f 3 | cut -c 3-)
 PROTO_PATH := .
 GO_OUT_PATH := .
-svc_dir := luminex
+svc_dir := $(if $(svc_dir),$(svc_dir),.)
 
 # Find proto files based on operating system
 ifeq ($(GOHOSTOS), windows)
