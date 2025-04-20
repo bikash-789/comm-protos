@@ -1,0 +1,33 @@
+# IDE directories
+.idea/
+.vscode/
+
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool
+*.out
+
+# Go generated files
+*.pb.go
+*.pb.validate.go
+
+# MacOS files
+.DS_Store
+
+# Log files
+*.log
+
+# Dependency directories
+/vendor/
+
+# Local env files
+.env
+.env.local 
